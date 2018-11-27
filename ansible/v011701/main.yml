@@ -102,15 +102,15 @@
         - pmm-server-1.17.1
         - pmm-client-1.17.1
         - percona-orchestrator-3.0.6
-        - percona-prometheus-2.5.0
+        - percona-prometheus-2.3.2
         - percona-qan-api-1.17.1
-        - percona-grafana-5.3.3
+        - percona-grafana-5.1.3
         - percona-qan-app-1.17.1
         - pmm-manage-1.17.1
         - pmm-managed-1.17.1
         - percona-consul-0.8.5
         - rds_exporter-1.17.1
-        - percona-clickhouse-server-18.14.13
+#        - percona-clickhouse-server-18.14.13
 
     - name: PMM                        | Restore unmanaged configs
       copy: src={{ item.src }} dest={{ item.dest }}
