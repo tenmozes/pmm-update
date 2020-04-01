@@ -150,3 +150,8 @@
 
     - name: Check supervisord log
       debug: var=maintail_result.stdout_lines
+
+    - name: Check dashboard-upgrade logs
+      debug: var=item
+      with_file:
+        - "/srv/logs/dashboard-upgrade.log"
