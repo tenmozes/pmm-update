@@ -129,8 +129,17 @@
           - pmm-agent
         - ['stop', 'remove', 'add']
 
-    - name: Rename Grafana community panels
-      command: /usr/share/percona-dashboards/fix-panels.py
+    - name: Check 1 files in  /var/lib/grafana/plugins folder 
+      find:
+        paths: /var/lib/grafana/plugins 
+
+    - name: Check 1 dashboard-upgrade logs
+      debug: var=item
+      with_file:
+        - "/srv/logs/dashboard-upgrade.log"
+
+#    - name: Rename Grafana community panels
+#      command: /usr/share/percona-dashboards/fix-panels.py
 
     - name: Start Grafana dashboards update
       command: supervisorctl start dashboard-upgrade
@@ -154,7 +163,12 @@
     - name: Check supervisord log
       debug: var=maintail_result.stdout_lines
 
-    - name: Check dashboard-upgrade logs
+    - name: Check 2 dashboard-upgrade logs
       debug: var=item
       with_file:
         - "/srv/logs/dashboard-upgrade.log"
+
+    - name: Check 2 files in  /var/lib/grafana/plugins folder
+      find:
+        paths: /var/lib/grafana/plugins
+
