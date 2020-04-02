@@ -22,6 +22,9 @@
     # See https://github.com/Supervisor/supervisor/issues/1264 for explanation
     # why we do reread + stop/remove/add instead of using supervisorctl Ansible module.
 
+    - name: Check 1 files in  /var/lib/grafana/plugins folder
+      command: "ls -la /var/lib/grafana/plugins"
+
     - name: Reread supervisord configuration
       command: supervisorctl reread
       register: reread_result
@@ -129,9 +132,8 @@
           - pmm-agent
         - ['stop', 'remove', 'add']
 
-    - name: Check 1 files in  /var/lib/grafana/plugins folder 
-      find:
-        paths: /var/lib/grafana/plugins 
+    - name: Check 2 files in  /var/lib/grafana/plugins folder 
+      command: "ls -la /var/lib/grafana/plugins" 
 
     - name: Check 1 dashboard-upgrade logs
       debug: var=item
@@ -168,7 +170,6 @@
       with_file:
         - "/srv/logs/dashboard-upgrade.log"
 
-    - name: Check 2 files in  /var/lib/grafana/plugins folder
-      find:
-        paths: /var/lib/grafana/plugins
+    - name: Check 3 files in  /var/lib/grafana/plugins folder
+      command: "ls -la /var/lib/grafana/plugins"
 
