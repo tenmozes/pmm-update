@@ -150,6 +150,7 @@
         - - nginx
           - postgresql
           - prometheus
+          - victoriametrics
           - alertmanager
           - clickhouse
           - grafana
